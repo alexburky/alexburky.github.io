@@ -1,0 +1,360 @@
+@font-face {
+  font-family: "Philosopher";
+  src: url("file:///Users/aburky/Desktop/Website/seismology_notes/fonts/Philosopher-Regular.ttf")
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Philosopher';
+}
+
+p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+footer {
+  font-family: 'Philosopher';
+  background: #000000;
+  height: 70px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-text {
+  margin-top: 25px;
+  margin-right: 20px;
+  color: #f2f2f2;
+  float: right;
+}
+
+.foot-nav {
+  margin-top: 15px;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.text-link {
+  text-decoration: none;
+}
+.text-link:link {
+  color: #1ea6a1;
+}
+.text-link:visited {
+  color: #1ea6a1;
+}
+.text-link:hover {
+  color: #19e0da;
+}
+.text-link:active {
+  color: #19e0da;
+}
+
+.navbar {
+  font-size: 18px;
+  background: #000000;
+  padding-bottom: 10px;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.nav-links, .logo {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 24px;
+  margin-top: 10px;
+  margin-left: 20px;
+  /* white-space: nowrap; */
+}
+
+.sidenav {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.bio {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 210px);
+}
+
+.portrait {
+  margin-left: 20%;
+  max-width: 60%;
+  height: auto;
+  width: auto;
+}
+
+.bio-text {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 50px;
+}
+
+.blog-post {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: 'Optima';
+  min-height: calc(100vh - 210px);
+}
+
+.post-start {
+  margin-bottom: 30px;
+}
+
+/* Styling for tutorial images */
+.cards {
+  min-height: calc(100vh - 190px);
+  margin-top: 50px;
+  margin-bottom: 25px;
+  margin-left: 20%;
+  /* display: grid;
+  /* justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-row-gap: -75px;
+  grid-column-gap: 0px; */
+}
+
+.cards a {
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 0px;
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+.card:hover {
+  transform: scale(1.02, 1.02);
+}
+
+.cards p {
+  position: relative;
+  bottom: 90px;
+  left: 20px;
+}
+
+/* Styling for directory hierarchy */
+.clt, .clt ul, .clt li {
+  position: relative;
+}
+
+.clt ul {
+  list-style: none;
+  padding-left: 32px;
+}
+
+.clt li::before, .clt li::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+}
+
+.clt li::before {
+  border-top: 1px solid #000;
+  top: 9px;
+  width: 8px;
+  height: 0;
+}
+
+.clt li::after {
+  border-left: 1px solid #000;
+  height: 100%;
+  width: 0px;
+  top: 2px;
+}
+
+.clt ul > li:last-child::after {
+  height: 8px;
+}
+
+/* Display settings for Desktop/Large Screens */
+@media screen and (min-width: 1000px) {
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    height: 80px;
+    align-items: center;
+  }
+
+  .main-nav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .main-nav li {
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-left: 40px;
+    font-size: 24px;
+  }
+
+  .logo {
+    margin-top: 0;
+    margin-left: 30px;
+    font-size: 64px;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .nav-links:hover {
+    color: #20dbd0;
+  }
+
+  /* Styling for sidebar navigation */
+  .sidenav {
+    display: inline;
+    position: absolute;
+    margin-top: 10px;
+    width: 300px;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav p {
+    margin-left: 30px;
+    font-style: bold;
+    font-size: 20px;
+  }
+
+  .sidenav a {
+    margin-left: 30px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .sidenav a:link {
+    color: #1ea6a1;
+  }
+  .sidenav a:visited {
+    color: #1ea6a1;
+  }
+  .sidenav a:hover {
+    color: #19e0da;
+  }
+  .sidenav a:active {
+    color: #19e0da;
+  }
+
+  .bio {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+  }
+
+  .blog-post {
+    margin-top: 50px;
+    margin-left: 350px;
+    max-width: 70%;
+    min-height: calc(100vh - 250px);
+    font-family: 'Optima';
+    font-size: 16px;
+  }
+
+  .portrait {
+    margin-left: 0%;
+    max-width: 25%;
+    height: auto;
+    width: auto;
+  }
+
+  .bio-text {
+    max-width: 35%;
+    margin-left: 10%;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .footer-text {
+    margin-top: 25px;
+    margin-right: 20px;
+    color: #f2f2f2;
+    float: right;
+  }
+
+  .foot-nav {
+    margin-top: 15px;
+    margin-left: 20px;
+    display: inline-block;
+  }
+
+  /* Styling for tutorial images */
+  .cards {
+    min-height: calc(100vh - 225px);
+    margin-top: 50px;
+    margin-bottom: 25px;
+    margin-left: 100px;
+    margin-right: 150px;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-row-gap: -75px;
+    grid-column-gap: 50px; */
+  }
+
+  .cards a {
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 0px;
+    text-decoration: none;
+    color: #f2f2f2;
+  }
+
+  .card:hover {
+    transform: scale(1.02, 1.02);
+  }
+
+  .cards p {
+    position: relative;
+    bottom: 90px;
+    left: 20px;
+  }
+
+}

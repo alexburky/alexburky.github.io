@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Research | Alex Burky</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+  </head>
+
+  <nav class="navbar">
+    <span class="navbar-toggle" id="js-navbar-toggle">
+      <i class="fa fa-bars"></i>
+    </span>
+
+    <a href="index.html" class="logo">Alex Burky</a>
+
+    <ul class="main-nav" id="js-menu">
+      <li>
+        <a href="index.html" class="nav-links">About</a>
+      </li>
+      <li>
+        <a href="research.html" class="nav-links" style="color: #19e0da;">Research</a>
+      </li>
+      <li>
+        <a href="publications.html" class="nav-links">Publications</a>
+      </li>
+      <li>
+        <a href="projects.html" class="nav-links">Projects</a>
+      </li>
+    </ul>
+  </nav>
+  <!---
+      <h1>Receiver Functions</h1>
+
+      <h1>Seismometry</h1>
+      --->
+
+  <div class="image-post">
+    <section class="right-section-i" id="b">
+      <img class="center" src="/img/moon_waves.gif" height="auto" width="200px"/>
+    </section>
+
+    <section class="left-section-i" id="a">
+      <h1>Numerical Methods</h1><hr>
+      <p>
+        One of the most exciting aspects of modern geophysical research is our ability to
+        simulate physical phenomena with ever-increasing accuracy and speed. The development
+        of easily implementable numerical methods for the solution of partial differential equations,
+        as well as the availablity and power of modern computers, have made the solution of
+        equations like the seismic wave equation:
+      </p>
+
+      <div class="latex">
+        \[ \rho \mathbf{\ddot{u}} = \nabla\lambda(\nabla \cdot \mathbf{u}) + \nabla\mu \cdot
+        [\nabla\mathbf{u} + (\nabla\mathbf{u})^{T}] + (\lambda + 2\mu)\nabla\nabla \cdot
+        \mathbf{u} - \mu\nabla \times \nabla \times \mathbf{u} \]
+      </div>
+
+      <p>
+        possible with even a modest laptop. Using the supercomputing resources at PICSciE, I can run
+        these simulations for increasingly detailed Earth models, down to frequencies of 1 Hz.
+        My research aims to harness the powers of these computational methods to further our
+        understanding of the interior structure of the Earth, as well as other planets. In addition,
+        I am broadly interested in numerical methods as a whole, since they exist at the
+        fascinating intersection of mathematics, computer science, and physics.
+      </p>
+    </section>
+  </div>
+
+  <div class="image-post">
+    <section class="left-section-i" id="a">
+      <h1>Seismic Imaging</h1><hr>
+      <p>
+        When you go to the doctor to get an X-Ray, high frequency electromagnetic waves are
+        propagated through your bones and tissue to produce an image of your insides. Using the
+        same physical principles, seismologists use much lower frequency seismic waves to produce
+        images of the interior of the Earth. My research uses seismic data recorded by earthquakes
+        around the globe to map out the structure of the mantle, ranging from depths near the
+        Earth's surface all the way down to 1000 km.
+      </p>
+      <p>
+        In particular, I am interested in depths between 400 and 700 km, a region known as the
+        mantle transition zone. At these depths, olivine, a major mineral constituent of much of the
+        Earth's crust and mantle, undergoes multiple phase changes. Just as ice turns to liquid water
+        at certain pressures and temperatures, solid olivine transforms to its high pressure forms
+        due to the tremendous pressure at these extreme depths. Astonishingly, the signature of these
+        phase transitions can be observed in seismic images as two bright reflectors around 410 and 660
+        km depth (the solid red lines in the animation). By measuring the properties of these phase
+        transitions, we can get a sense of the variation of the temperature and pressure deep within the Earth.
+      </p>
+    </section>
+    <section class="right-section-i" id="b">
+      <video width="700px" height="auto" autoplay loop muted>
+        <source src="/img/ccpPolar.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+    </section>
+  </div>
+
+  <footer>
+    <a class="foot-nav" href="mailto:aburky@princeton.edu?">
+      <img src="/img/email-logo-white.png" width="32px" height="32px"/>
+    </a>
+    <a class="foot-nav" href="https://github.com/alexburky" target="_blank"/>
+      <img src="/img/github-large-white.png" width="32px" height="32px"/>
+    </a>
+    <p class="footer-text">&#169; 2022 aburky@princeton.edu</p>
+  </footer>
+</html>
+
+<script src="/js/script.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

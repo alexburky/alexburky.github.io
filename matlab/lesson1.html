@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../highlight/styles/qtcreator_dark.css">
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <title>irisFetch.m</title>
+  </head>
+
+  <nav class="navbar">
+    <span class="navbar-toggle" id="js-navbar-toggle">
+      <i class="fa fa-bars"></i>
+    </span>
+
+    <a href="../index.html" class="logo">Alex Burky</a>
+
+    <ul class="main-nav" id="js-menu">
+      <li>
+        <a href="../index.html" class="nav-links">About</a>
+      </li>
+      <li>
+        <a href="../tutorials.html" class="nav-links">Tutorials</a>
+      </li>
+      <li>
+        <a href="../fun.html" class="nav-links">Fun</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidenav">
+    <p>MATLAB for Seismologists</p>
+    <a href="lesson0.html">Terminal Basics</a>
+    <a href="lesson1.html">irisFetch.m</a>
+    <a href="lesson2.html">Downloading Data</a>
+    <a href="lesson3.html">Instrument Response: Theory</a>
+    <a href="lesson4.html">Instrument Response: Practice</a>
+  </div>
+
+  <body>
+    <div class="blog-post">
+      <h1>Lesson 1: How to Install irisFetch.m</h1>
+      <hr>
+      <p>Posted on October 14, 2020 at 4:40PM</p>
+      <hr class="post-start">
+      <p>
+        The goal of this exercise is to equip ourselves with a fundamental skill
+        necessary for global seismology research - <i>getting data to look at</i>.
+        I'm going to assume that you already have MATLAB up and running on your
+        computer at this point, but before we can move forward we're going to need
+        to install a few files. Researchers from the
+        <a class="text-link" href="https://www.iris.edu/hq/" target="_blank">Incorporated Research
+          Institutions for Seismology (IRIS)</a>
+        have created a MATLAB function which allows us to quickly and easily
+        download seismic data - <b>directly to our computers!</b>
+        Pay a visit to their
+        <a class="text-link" href="https://github.com/iris-edu/irisFetch-matlab/releases" target="_blank">GitHub
+          link</a>,
+          and download the <code class="matlab">.zip</code> file for the latest release.
+      </p>
+
+      <p>
+        Once your download is completed, go ahead and unzip the file. Inside you'll
+        find a typical MATLAB <code class="matlab">.m</code> file, as well as a <code class="matlab">README</code>. I recommend you get
+        into the habit of reading <code class="matlab">README</code> files now, but since this is a tutorial
+        I'll break down the next steps for you here.
+      </p>
+
+      <p>
+        To get <code class="matlab">irisFetch.m</code> to work properly, you have to have the IRIS-WS java
+        library installed. Head to
+        <a class="text-link" href="http://ds.iris.edu/ds/nodes/dmc/software/downloads/IRIS-WS/" target="_blank">this
+        page</a> and find and download the latest release - at the time of
+        writing this is <code class="matlab">IRIS-WS-2.0.19.jar</code>. Once you've successfully downloaded this file,
+        follow along with the instructions below corresponding to the operating
+        system you are using.
+      </p>
+
+      <h2>macOS Users</h2>
+
+      <p>
+        To effectively use the <code class="matlab">irisFetch.m</code> script, we would like to be able to
+        call it whenever we are writing code in MATLAB. In order to make this
+        function accessible to us from anywhere within MATLAB, we need to add a
+        few lines to our <b><code class="matlab">startup.m</code></b> file. This is a file which MATLAB
+        automatically runs when it launches, so you can use it to load in
+        specific functions which you would like to be able to access while using
+        MATLAB.
+      </p>
+
+      <p>
+        Unfortunately, <code class="matlab">startup.m</code> does not exist by
+        default, so we are going to have to make it ourselves. With MATLAB opened,
+        go ahead and open up a new script (&#8984N) and add the following lines:
+      </p>
+
+      <div>
+        <pre><code class="matlab">% startup.m
+%
+% Last modified MM/DD/YYYY by yourname@email.com</pre></code>
+      </div>
+
+    <p>
+      but replace the date and email with appropriate values. Next, we need
+      to figure out where to save this file. In the
+      Command Window, type <code class="matlab">userpath</code> to retrieve the
+      directory which MATLAB searches upon starting up. On my machine, this
+      returns:
+    </p>
+
+      <div>
+        <pre><code class="Makefile">>> userpath
+
+ans =
+
+'/Users/MYUSERNAME/Documents/MATLAB'</pre></code>
+      </div>
+
+    <p>
+      This is the folder that you need to save your
+      <code class="matlab">startup.m</code> file in so that MATLAB can find it
+      when it launches. If you are unfamiliar with folders, paths, and
+      navigating your filesystem with Terminal, I recommend you go through my
+      <a class="text-link" href="lesson0.html" target="_blank">Terminal tutorial</a> before continuing.
+    </p>
+
+    <p>
+      When you've successfully saved your <code class="matlab">startup.m</code>
+      file, go ahead and open up Terminal, and navigate to your base directory
+      with the <code class="Makefile">cd</code> command. We are going to create
+      a few folders in our base directory to get our filesystem organized for
+      our future convenience.
+    </p>
+
+    <p>
+      I have adopted the convention of naming folders using a system which
+      helps me to easily remember what is saved where. I store all of my
+      MATLAB functions as <code class="matlab">.m</code> files in a folder named
+      <code class="Makefile">MFILES</code>. Similarly, I like to keep Java <code class="Makefile">.jar</code> files,
+      like the one we just downloaded, in a folder named <code class="Makefile">JFILES</code>.
+      I keep both of these folders in my base directory, so I can easily remember their
+      paths. This leads to a directory structure looking something like...
+    </p>
+
+    <div class="clt">
+      <ul>
+        <li>
+          Users/
+          <ul>
+            <li>
+              $USERNAME/
+              <ul>
+                <li>JFILES/</li>
+                <li>MFILES/</li>
+                <li>Applications/</li>
+                <li>...</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </li>
+    </div>
+
+    <p>
+      To create this structure for yourself, go ahead and execute <code class="matlab">mkdir JFILES</code>
+      followed by <code class="matlab">mkdir MFILES</code> while in your base directory in Terminal.
+    </p>
+
+    <p>
+      Next, we need to move the IRIS-WS <code class="matlab">.jar</code> file to the
+      <code class="matlab">JFILES</code> directory. Presumably, this file will still be in your
+      <code class="matlab">Downloads</code> folder, so we can move it to the <code class="matlab">JFILES</code> directory
+      by executing the following in Terminal:
+    </p>
+
+      <div>
+       <pre><code class="Makefile">mv ~/Downloads/IRIS-WS-2.0.19.jar ~/JFILES/</code></pre>
+      </div>
+
+    <p>
+      While we're here, we should also move the <code class="matlab">irisFetch.m</code> function to
+      the <code class="matlab">MFILES</code> directory so we can easily access it for future use. We can do
+      this by executing the following in Terminal:
+    </p>
+
+    <div>
+     <pre><code class="Makefile">mv ~/Downloads/irisFetch-matlab-2.0.11/irisFetch.m ~/MFILES/</code></pre>
+    </div>
+
+    <p>
+      Great! We're almost there! All we have left to do before we can download some seismic data is to
+      tell MATLAB to look for both of these files when it launches. Go back into MATLAB, open up
+      your <code class="matlab">startup.m</code> file and add the following lines:
+    </p>
+
+    <div>
+      <pre><code class="matlab">% Path to MFILES
+addpath /Users/$USERNAME/MFILES
+
+% Path to IRIS-WS .jar file
+javaaddpath('/Users/$USERNAME/JFILES/IRIS-WS-2.0.19.jar');
+      </pre></code>
+    </div>
+
+    <p>
+      making sure you replace <code class="matlab">$USERNAME</code> with the
+      appropriate value for your machine. Now go ahead and restart MATLAB. When it re-opens,
+      execute <code class="matlab">irisFetch</code> in the Command Window. If you've set
+      everything up successfully, you should see something like the following:
+    </p>
+
+    <div>
+      <pre><code class="Makefile">>> irisFetch
+
+ans =
+
+<b><u>irisFetch</u></b> with properties:
+
+            VERSION: '2.0.11'
+     DATE_FORMATTER: 'yyyy-mm-dd HH:MM:SS.FFF'
+    MIN_JAR_VERSION: '2.0.15'
+    VALID_QUALITIES: {'D' 'R' 'Q' 'M' 'B'}
+    DEFAULT_QUALITY: 'M'
+       FETCHER_LIST: {'Traces' 'Stations' 'Events' 'Resp'}
+  forceDataAsDouble: 1
+   </pre></code>
+    </div>
+
+    <p>
+      Congratulations! The hardest part is over and now we can finally get on to
+      the interesting part - downloading seismic data!
+    </p>
+
+    </div>
+  </body>
+
+  <footer>
+    <a class="foot-nav" href="mailto:aburky@princeton.edu?">
+      <img src="../img/email-logo-white.png" width="32px" height="32px"/>
+    </a>
+    <a class="foot-nav" href="https://github.com/alexburky" target="_blank"/>
+      <img src="../img/github-large-white.png" width="32px" height="32px"/>
+    </a>
+    <p class="footer-text">&#169; 2020 aburky@princeton.edu</p>
+  </footer>
+</html>
+
+<script src="../js/script.js"></script>
